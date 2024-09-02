@@ -566,7 +566,7 @@ public class TrackManager : MonoBehaviour
 				}
 				else
 				{
-					toUse = Coin.coinPool.Get(pos, rot);
+					toUse = Coin.coinPool.Get(pos + 5 * Vector3.back, rot);
 					toUse.transform.SetParent(segment.collectibleTransform, true);
 				}
 

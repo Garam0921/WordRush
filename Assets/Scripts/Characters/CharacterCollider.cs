@@ -132,8 +132,9 @@ public class CharacterCollider : MonoBehaviour
 				m_DeathData.obstacleType = obstacleType;
 				m_DeathData.score = controller.trackManager.score;
 				m_DeathData.worldDistance = controller.trackManager.worldDistance;
-
 			}
+
+			controller.trackManager.SetToNextTest();
 		}
 		else if (c.gameObject.layer == k_AnswerLayerIndex)
 		{
