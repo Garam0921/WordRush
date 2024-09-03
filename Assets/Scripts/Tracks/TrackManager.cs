@@ -117,6 +117,7 @@ public class TrackManager : MonoBehaviour
 		s_Instance = this;
 	}
 
+
 	public void StartMove(bool isRestart = true)
 	{
 		characterController.StartMoving();
@@ -495,14 +496,15 @@ public class TrackManager : MonoBehaviour
 			{
 				if (obstacle is TestObstacle)
 				{
-					// TODO : 단어 집어 넣어야 함
-					string problem = "Test " + Random.Range(1, 100);
+					// TODO : 엑셀 페이지를 구분하는 기능을 만들어야 함.
+					Dictionary<string, string> word = WordManager.Instance.GetRandomWordSet("900");
 
 					if (m_CurrentTest.Equals(string.Empty))
-						m_CurrentTest = problem;
+						m_CurrentTest = word["Test"];
 					else
-						m_TestQueue.Enqueue(problem);
-					(obstacle as TestObstacle).ApplyTest(problem, "Wrong", "Wrong");
+						m_TestQueue.Enqueue(word["Test"]);
+
+					(obstacle as TestObstacle).ApplyTest(word["Answer"], word["Wrong1"], word["Wrong2"]);
 				}
 
 				yield return obstacle.Spawn(segment, segment.obstaclePositions[posIndex]);
